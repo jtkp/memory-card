@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import Scores from './content/Scores.js';
-import Cards from './content/Cards.js';
+import Scores from './content/Scores';
+import Cards from './content/Cards';
+import ARTISTS from "./Artists";
 
 
 function Content() {
-
-  const [cards, setCards] = useState(allCards);
+  // need to select 12 artists first before storing in state
+  const [selected, setSelected] = useState(ARTISTS);
 
 
 
