@@ -1,18 +1,23 @@
-import Header from './components/Header.js';
-import Content from './components/Content.js';
-import Footer from './components/Footer.js';
+import React, { useState } from "react";
+import Scores from './content/Scores.js';
+import Cards from './content/Cards.js';
 
-function App() {
+
+function Content() {
+
+  const [cards, setCards] = useState(allCards);
+
+
+
   return (
-    <div className="App">
-      <Header></Header>
-      <Content></Content>
-      <Footer></Footer>
+    <div>
+      <Scores></Scores>
+      <Cards></Cards>
     </div>
-  );
+  )
 }
 
-export default App;
+export default Content;
 
 // header div
   // title/logo img
