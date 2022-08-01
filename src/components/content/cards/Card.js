@@ -1,6 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 
+function Card({ id, name, image, handleClick }) {
+
+  const handleClickCard = (event) => {
+    handleClick(event);
+  }
+
+  return (
+    <StyledDiv onClick={handleClickCard}>
+      <StyledImg src={image} alt={name} />
+      <StyledH1>{name}</StyledH1>
+    </StyledDiv>
+  )
+}
+
 const StyledDiv = styled.div`
   display: flex;
   padding: 1rem 1rem 0 1rem;
@@ -24,19 +38,5 @@ const StyledImg = styled.img`
   width: 200px;
   height: 300px;
 `
-
-function Card({ id, name, image, handleClick }) {
-
-  const handleClickCard = (event) => {
-    handleClick(event);
-  }
-
-  return (
-    <StyledDiv onClick={handleClickCard}>
-      <StyledImg src={image} alt={name} />
-      <StyledH1>{name}</StyledH1>
-    </StyledDiv>
-  )
-}
 
 export default Card;

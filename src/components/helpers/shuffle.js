@@ -1,5 +1,5 @@
 import ARTISTS from "../Artists";
-
+// 0, 1, 2, 3
 function shuffle(array, start, end) {
   let newArray = array;
   for (let i = end - 1; i > start; i--) {
@@ -9,7 +9,7 @@ function shuffle(array, start, end) {
   return newArray;
 }
 
-function shuffleCurrent(array) {
+function shuffleTwelve(array) {
   return shuffle(array, 0, 12);
 }
 
@@ -18,7 +18,7 @@ function shuffleRemaining(array) {
 }
 
 function shuffleArray(array) {
-  return shuffleRemaining(shuffleCurrent(array));
+  return shuffleTwelve(shuffleRemaining(shuffleTwelve(array)));
 }
 
 export default shuffleArray;
