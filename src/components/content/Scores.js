@@ -1,14 +1,11 @@
 import React, { useState } from "react";
-import ScoreCurr from './scores/ScoreCurr';
-import ScoreBest from './scores/ScoreBest';
 
-function Scores() {
-
+function Scores({ scoreCurr, scoreBest }) {
 
   return (
     <div>
-      <ScoreCurr></ScoreCurr>
-      <ScoreBest></ScoreBest>
+      <h1>Current score: {scoreCurr}</h1>
+      <h1>Best score: {scoreBest}</h1>
     </div>
   )
 }

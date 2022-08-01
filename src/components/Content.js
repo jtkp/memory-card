@@ -1,26 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Scores from './content/Scores';
 import Cards from './content/Cards';
 import ARTISTS from "./Artists";
 import shuffleArray from "./helpers/shuffle";
 
 function Content() {
-  // need to select 12 artists first before storing in state
   const [artistsCurr, setArtistsCurr] = useState(ARTISTS);
   const [twelveArtists, setTwelveArtists] = useState(artistsCurr.slice(0, 12));
   const [scoreCurr, setScoreCurr] = useState(0);
   const [scoreBest, setscoreBest] = useState(0);
 
   const handleClick = (event) => {
-    console.log(`clicked on ${event.currentTarget.textContent}`);
-    let newArray = shuffleArray(artistsCurr);
-    setArtistsCurr(newArray);
+    let name = event.currentTarget.textContent;
+    console.log(`clicked on ${name}`);
+    artistsCurr = shuffleArray(artistsCurr);
     setTwelveArtists(artistsCurr.slice(0, 12));
+
+    if (!clicked.includes(name)) {
+      setScoreCurr(scoreCurr);
+      if (scoreCurr > scoreBest) {
+        setscoreBest(scoreCurr);
+      }
+    } else {
+      console.log('clicked has this name already');
+      setScoreCurr(0);
+    }
   }
 
   return (
     <div>
-      {/* <Scores scoreCurr={scoreCurr} scoreBest={scoreBest}></Scores> */}
+      <Scores scoreCurr={scoreCurr} scoreBest={scoreBest}></Scores>
       <Cards artistsCurr={twelveArtists} handleClick={handleClick}></Cards>
     </div>
   )
