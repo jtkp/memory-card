@@ -2,13 +2,11 @@ import React, { useState } from "react";
 import Scores from './content/Scores';
 import Cards from './content/Cards';
 import ARTISTS from "./Artists";
-
+import shuffleArray from "./helpers/shuffle";
 
 function Content() {
   // need to select 12 artists first before storing in state
   const [selected, setSelected] = useState(ARTISTS);
-
-
 
   return (
     <div>
