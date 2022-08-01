@@ -1,8 +1,28 @@
 import React from "react";
 import styled from "styled-components";
 
+const StyledDiv = styled.div`
+  display: flex;
+  padding: 1rem 1rem 0 1rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  transition: transform .2s;
+  &:hover {
+    transform: scale(1.05);
+  }
+`
+
+const StyledH1 = styled.h1`
+  font-size: 1rem;
+`
+
 const StyledImg = styled.img`
-  width: 300px;
+  object-fit: cover;
+  width: 200px;
+  height: 300px;
 `
 
 function Card({ id, name, image, handleClick }) {
@@ -12,10 +32,10 @@ function Card({ id, name, image, handleClick }) {
   }
 
   return (
-    <div onClick={handleClickCard}>
-      <h1>{name}</h1>
+    <StyledDiv onClick={handleClickCard}>
       <StyledImg src={image} alt={name} />
-    </div>
+      <StyledH1>{name}</StyledH1>
+    </StyledDiv>
   )
 }
 
