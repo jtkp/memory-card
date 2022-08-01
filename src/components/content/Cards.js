@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
+import Card from './cards/Card';
 
-function Cards(props) {
+function Cards({ artistsCurr, handleClick }) {
 
+  let cards = artistsCurr.map(({ id, name, image }, index) => {
+    return (
+      <Card key={index} id={id} name={name} image={image} handleClick={handleClick}></Card>
+    )
+  });
 
   return (
     <div>
-      {card}
-      <Card image={props.image} name={props.name}></Card>
+      {cards}
     </div>
   )
 }

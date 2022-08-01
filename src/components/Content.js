@@ -6,12 +6,19 @@ import shuffleArray from "./helpers/shuffle";
 
 function Content() {
   // need to select 12 artists first before storing in state
-  const [selected, setSelected] = useState(ARTISTS);
+  const [artistsCurr, setArtistsCurr] = useState(ARTISTS);
+  const [scoreCurr, setScoreCurr] = useState(0);
+  const [scoreBest, setscoreBest] = useState(0);
+
+  function handleClick(event) {
+    console.log('entered Content.js handleClick');
+    console.log(event.currentTarget.textContent);
+  }
 
   return (
     <div>
-      <Scores></Scores>
-      <Cards></Cards>
+      {/* <Scores scoreCurr={scoreCurr} scoreBest={scoreBest}></Scores> */}
+      <Cards artistsCurr={artistsCurr.slice(0, 12)} handleClick={handleClick}></Cards>
     </div>
   )
 }
