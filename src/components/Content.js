@@ -5,49 +5,47 @@ import ARTISTS from "./Artists";
 import shuffleArray from "./helpers/shuffle";
 
 function Content() {
-  const [artistsCurr, setArtistsCurr] = useState(ARTISTS);
-  const [twelveArtists, setTwelveArtists] = useState(artistsCurr.slice(0, 12));
-  const [scoreCurr, setScoreCurr] = useState(0);
-  const [scoreBest, setscoreBest] = useState(0);
+  const [store, setStore] = useState({
+    artists: ARTISTS,
+    artistsTwelve: ARTISTS.slice(0, 12),
+    scoreCurr: 0,
+    scoreBest: 0,
+    selected: [],
+  });
 
   const handleClick = (event) => {
     let name = event.currentTarget.textContent;
     console.log(`clicked on ${name}`);
-    artistsCurr = shuffleArray(artistsCurr);
-    setTwelveArtists(artistsCurr.slice(0, 12));
 
-    if (!clicked.includes(name)) {
-      setScoreCurr(scoreCurr);
-      if (scoreCurr > scoreBest) {
-        setscoreBest(scoreCurr);
+    let newState = {};
+    newState.artists = shuffleArray(store.artists);
+    newState.artistsTwelve = newState.artists.slice(0, 12);
+    newState.scoreCurr = store.scoreCurr;
+    newState.scoreBest = store.scoreBest;
+    newState.selected = store.selected;
+
+    if (!store.selected.includes(name)) {
+      console.log('have not seen this name');
+      newState.scoreCurr++;
+      if (newState.scoreCurr > newState.scoreBest) {
+        newState.scoreBest++;
       }
+      newState.selected.push(name);
     } else {
-      console.log('clicked has this name already');
-      setScoreCurr(0);
+      console.log('selected this name already');
+      newState.scoreCurr = 0;
+      newState.selected = [];
     }
+
+    setStore(newState);
   }
 
   return (
     <div>
-      <Scores scoreCurr={scoreCurr} scoreBest={scoreBest}></Scores>
-      <Cards artistsCurr={twelveArtists} handleClick={handleClick}></Cards>
+      <Scores scoreCurr={store.scoreCurr} scoreBest={store.scoreBest}></Scores>
+      <Cards artistsCurr={store.artistsTwelve} handleClick={handleClick}></Cards>
     </div>
   )
 }
 
 export default Content;
-
-// header div
-  // title/logo img
-// content div
-  // scores div
-    // current score div
-      // 'Current score: {scoreCurr}'
-    // best score div
-      // 'Best score: {scoreBest}'
-  // cards div
-    // cardx12 div
-      // image img
-      // caption text
-// footer
-  // text
