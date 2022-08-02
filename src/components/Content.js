@@ -3,6 +3,7 @@ import Scores from './content/Scores';
 import Cards from './content/Cards';
 import ARTISTS from "./Artists";
 import shuffleArray from "./helpers/shuffle";
+import styled from "styled-components";
 
 function Content() {
   const [store, setStore] = useState({
@@ -41,11 +42,17 @@ function Content() {
   }
 
   return (
-    <div>
+    <StyledDiv>
       <Scores scoreCurr={store.scoreCurr} scoreBest={store.scoreBest}></Scores>
       <Cards artistsCurr={store.artistsTwelve} handleClick={handleClick}></Cards>
-    </div>
+    </StyledDiv>
   )
 }
+
+const StyledDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
 
 export default Content;

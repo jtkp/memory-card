@@ -1,16 +1,22 @@
 import Header from './components/Header';
 import Content from './components/Content';
 import Footer from './components/Footer';
+import styled from 'styled-components';
 
 function App() {
   return (
-    <div className="App">
-      <h1>hello</h1>
-      {/* <Header></Header> */}
+    <StyledDiv>
+      <Header></Header>
       <Content></Content>
       {/* <Footer></Footer> */}
-    </div>
+    </StyledDiv>
   );
 }
+
+const StyledDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
 
 export default App;
